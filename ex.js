@@ -45,12 +45,24 @@ var Carro = /** @class */ (function () {
     }
     return Carro;
 }());
-// let data = new Carro("Fiat","Uno","Legal",2010,140000,20000)
-Get();
-postData("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros", new Carro("GM", "Onix", "Sedan", 2022, 0, 65000))
+var camaro = new Carro("GM", "Camaro", "Amarelo", 2008, 200000, 40000);
+var uno = new Carro("Fiat", "Uno", "Hatch", 2010, 150000, 30000);
+// Get()
+// postData("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros", uno)
+// .then((data) => {
+// console.log(data);
+// });
+// Get()
+// putData("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros/1", camaro)
+//     .then((data) => {
+//         console.log(data);
+//     });
+// Get()
+deleteData("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros/1")
     .then(function (data) {
     console.log(data);
 });
+Get();
 function Get() {
     return fetch("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros")
         .then(function (response) { return response.json(); })
@@ -65,6 +77,58 @@ function postData(url, data) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, fetch(url, {
                         method: 'POST',
+                        mode: 'cors',
+                        cache: 'no-cache',
+                        credentials: 'same-origin',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        redirect: 'follow',
+                        referrerPolicy: 'no-referrer',
+                        body: JSON.stringify(data)
+                    })];
+                case 1:
+                    response = _a.sent();
+                    return [2 /*return*/, response.json()];
+            }
+        });
+    });
+}
+function deleteData(url, data) {
+    if (url === void 0) { url = ''; }
+    if (data === void 0) { data = {}; }
+    return __awaiter(this, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, fetch(url, {
+                        method: 'DELETE',
+                        mode: 'cors',
+                        cache: 'no-cache',
+                        credentials: 'same-origin',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        redirect: 'follow',
+                        referrerPolicy: 'no-referrer',
+                        body: JSON.stringify(data)
+                    })];
+                case 1:
+                    response = _a.sent();
+                    return [2 /*return*/, response.json()];
+            }
+        });
+    });
+}
+function putData(url, data) {
+    if (url === void 0) { url = ''; }
+    if (data === void 0) { data = {}; }
+    return __awaiter(this, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, fetch(url, {
+                        method: 'PUT',
                         mode: 'cors',
                         cache: 'no-cache',
                         credentials: 'same-origin',
