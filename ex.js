@@ -53,16 +53,15 @@ var uno = new Carro("Fiat", "Uno", "Hatch", 2010, 150000, 30000);
 // console.log(data);
 // });
 // Get()
-// putData("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros/1", camaro)
+// putData(2 , camaro)
 //     .then((data) => {
 //         console.log(data);
 //     });
 // Get()
-// deleteData("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros/1")
-//     .then((data) => {
-//         console.log(data);
-//     });
-GetById(2);
+deleteData(2)
+    .then(function (data) {
+    console.log(data);
+});
 function Get() {
     return fetch("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros")
         .then(function (response) { return response.json(); })
@@ -99,14 +98,12 @@ function postData(url, data) {
         });
     });
 }
-function deleteData(url, data) {
-    if (url === void 0) { url = ''; }
-    if (data === void 0) { data = {}; }
+function deleteData(id) {
     return __awaiter(this, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, fetch(url, {
+                case 0: return [4 /*yield*/, fetch("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros/".concat(id), {
                         method: 'DELETE',
                         mode: 'cors',
                         cache: 'no-cache',
@@ -115,8 +112,7 @@ function deleteData(url, data) {
                             'Content-Type': 'application/json'
                         },
                         redirect: 'follow',
-                        referrerPolicy: 'no-referrer',
-                        body: JSON.stringify(data)
+                        referrerPolicy: 'no-referrer'
                     })];
                 case 1:
                     response = _a.sent();
@@ -125,14 +121,13 @@ function deleteData(url, data) {
         });
     });
 }
-function putData(url, data) {
-    if (url === void 0) { url = ''; }
+function putData(id, data) {
     if (data === void 0) { data = {}; }
     return __awaiter(this, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, fetch(url, {
+                case 0: return [4 /*yield*/, fetch("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros/".concat(id), {
                         method: 'PUT',
                         mode: 'cors',
                         cache: 'no-cache',

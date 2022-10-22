@@ -25,16 +25,15 @@ let uno = new Carro("Fiat","Uno","Hatch",2010,150000,30000)
 // console.log(data);
 // });
 // Get()
-// putData("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros/1", camaro)
+// putData(2 , camaro)
 //     .then((data) => {
 //         console.log(data);
 //     });
 // Get()
-// deleteData("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros/1")
-//     .then((data) => {
-//         console.log(data);
-//     });
-GetById(2)
+deleteData(2)
+    .then((data) => {
+        console.log(data);
+    });
 
 
 function Get() {
@@ -65,8 +64,8 @@ async function postData(url = '', data = {}) {
     return response.json();
 }
 
-async function deleteData(url = '', data = {}) {
-    const response = await fetch(url, {
+async function deleteData(id : number) {
+    const response = await fetch(`https://apigenerator.dronahq.com/api/x7BRQ4V1/carros/${id}`, {
         method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors',
         cache: 'no-cache',
@@ -76,13 +75,12 @@ async function deleteData(url = '', data = {}) {
         },
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
-        body: JSON.stringify(data)
     });
     return response.json();
 }
 
-async function putData(url = '', data = {}) {
-    const response = await fetch(url, {
+async function putData(id : number, data = {}) {
+    const response = await fetch(`https://apigenerator.dronahq.com/api/x7BRQ4V1/carros/${id}`, {
         method: 'PUT', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors',
         cache: 'no-cache',
