@@ -30,17 +30,23 @@ let uno = new Carro("Fiat","Uno","Hatch",2010,150000,30000)
 //         console.log(data);
 //     });
 // Get()
-deleteData("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros/1")
-    .then((data) => {
-        console.log(data);
-    });
-Get()
+// deleteData("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros/1")
+//     .then((data) => {
+//         console.log(data);
+//     });
+GetById(2)
 
 
 function Get() {
     return fetch("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros")
         .then((response) => response.json())
         .then((data) => console.log(data));
+}
+
+function GetById(id : number) {
+    return fetch(`https://apigenerator.dronahq.com/api/x7BRQ4V1/carros/${id}`)
+    .then((response) => response.json())
+    .then((data) => console.log(data));
 }
 
 async function postData(url = '', data = {}) {

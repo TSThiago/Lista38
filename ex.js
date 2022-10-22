@@ -58,13 +58,18 @@ var uno = new Carro("Fiat", "Uno", "Hatch", 2010, 150000, 30000);
 //         console.log(data);
 //     });
 // Get()
-deleteData("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros/1")
-    .then(function (data) {
-    console.log(data);
-});
-Get();
+// deleteData("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros/1")
+//     .then((data) => {
+//         console.log(data);
+//     });
+GetById(2);
 function Get() {
     return fetch("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros")
+        .then(function (response) { return response.json(); })
+        .then(function (data) { return console.log(data); });
+}
+function GetById(id) {
+    return fetch("https://apigenerator.dronahq.com/api/x7BRQ4V1/carros/".concat(id))
         .then(function (response) { return response.json(); })
         .then(function (data) { return console.log(data); });
 }
